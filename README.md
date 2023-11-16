@@ -1,4 +1,4 @@
-# 👍 Rate My Stuff;
+# 👍 Rate My Stuff 👎
 
 ## ❓What is it?
 
@@ -13,6 +13,7 @@
   - Website logic works with APIs.
 
 - ### ✔️ Milestone 2:
+  - Functional Navbar with Home button only.
   - On click detailed page for individual post. (View Page)
   - The posts have images. (via URL)
   - "Edit Page" via "View Page"
@@ -29,3 +30,15 @@
 # Planning DLCs:
 
         - ...
+
+## Wireframe of the MVP
+
+![alt text](https://i.imgur.com/XYiCv4J.png)
+
+## Imported Links To Follow Our Project and Resources
+
+- Trello Board: https://trello.com/b/eVj4uAHT/project-2
+- Wireframe: https://excalidraw.com/#room=f087197d0342178e15c6,0ia6kD_mm-szK57eCXQprg
+- Links to API:
+  - https://bootcamp-json-server-backend.adaptable.app
+  - https://github.com/pomerama/json-server-backend/tree/master
