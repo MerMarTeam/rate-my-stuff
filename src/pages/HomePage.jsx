@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function HomePage() {
 	const [postsArray, setPostsArray] = useState([]);
@@ -21,12 +22,15 @@ function HomePage() {
 			{postsArray.map((post) => {
 				return (
 					<div className="post" key={post.id}>
-						<h1>{post.title}</h1>
+						<h2>{post.title}</h2>
+						<Link to={`/post/${post.id}`}>Link to the Details</Link>
+						<hr />
 					</div>
 				);
 			})}
+			<br />
 			<button>
-				<a href="/create">Create</a>
+				<Link to="/create">Create Post</Link>
 			</button>
 		</div>
 	);
