@@ -7,7 +7,7 @@ function DetailPost() {
 
 	const createAPI = 'https://bootcamp-json-server-backend.adaptable.app/posts';
 
-	const [postObj, setPostObj] = useState('');
+	const [postObj, setPostObj] = useState(null);
 
 	useEffect(() => {
 		axios
@@ -19,15 +19,22 @@ function DetailPost() {
 			.catch((error) => {
 				console.log('Connection Failed' + '  ' + error);
 			});
-	}, []);
+	}, [postId]);
 
 	return (
-		<div className="detail-post">
-			<h1>{postObj.title}</h1>
-			<button>
-				<a href={`/edit/${postId}`}>Edit</a>
-			</button>
-		</div>
+		<>
+			{postObj && (
+				<div className="detail-post">
+					<h1>{postObj.title}</h1>
+					<br />
+					<img src={postObj.image} alt="" />
+					<br />
+					<button>
+						<a href={`/edit/${postId}`}>Edit</a>
+					</button>
+				</div>
+			)}
+		</>
 	);
 }
 
