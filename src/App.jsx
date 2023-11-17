@@ -6,6 +6,7 @@ import CreatePost from './pages/CreatePost';
 import DetailPost from './pages/DetailPost';
 import EditPost from './pages/EditPost';
 import Navbar from './components/Navbar';
+import LoginPage from './pages/LoginPage';
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 				<Route path="/create" element={<CreatePost />} />
 				<Route path="/post/:postId" element={<DetailPost />} />
 				<Route path="/edit/:postId" element={<EditPost />} />
+				<Route path="/login" element={<LoginPage />} />
 			</Routes>
 		</>
 	);
