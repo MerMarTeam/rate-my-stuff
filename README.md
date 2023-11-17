@@ -42,3 +42,9 @@
 - Links to API:
   - https://bootcamp-json-server-backend.adaptable.app
   - https://github.com/pomerama/json-server-backend/tree/master
+
+# Technical Documentation:
+
+## API Structure:
+
+....
