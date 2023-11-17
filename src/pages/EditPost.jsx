@@ -27,6 +27,8 @@ function EditPost(params) {
 	}, []);
 
 	let handleSubmit = (event) => {
+		event.preventDefault();
+
 		let requestBody = {
 			title: title,
 			image: image,
@@ -37,14 +39,11 @@ function EditPost(params) {
 				console.log('Connection to API success.....!');
 				setTitle(title);
 				setImage(image);
+				navigate(`/posts/${postId}`);
 			})
 			.catch((error) => {
 				console.log('Connection Failed' + '  ' + error);
 			});
-
-		event.preventDefault();
-
-		navigate(`/posts/${postId}`);
 	};
 
 	return (
