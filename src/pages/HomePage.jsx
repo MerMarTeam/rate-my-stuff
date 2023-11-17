@@ -21,10 +21,13 @@ function HomePage() {
 			<h1>Posts</h1>
 			{postsArray.map((post) => {
 				return (
-					<div className="post" key={post.id}>
-						<h2>{post.title}</h2>
-						<Link to={`/post/${post.id}`}>Link to the Details</Link>
-						<hr />
+					<div>
+						<Link to={`/post/${post.id}`}>
+							<div className="post" key={post.id}>
+								<h2>{post.title}</h2>
+							</div>
+							<br />
+						</Link>
 					</div>
 				);
 			})}
