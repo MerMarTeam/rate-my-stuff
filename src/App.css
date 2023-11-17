@@ -47,4 +47,12 @@
 
 .post h2 {
   margin: 25px;
+  text-decoration: none;
+  color: yellowgreen;
+}
+
+/* This should be responsive in the future */
+img {
+  width: 500px;
+  height: auto;
 }

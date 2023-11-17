@@ -19,16 +19,17 @@ function HomePage() {
 	return (
 		<div>
 			<h1>Posts</h1>
-			{postsArray.map((post) => {
+			{postsArray.map((post, i) => {
 				return (
-					<div>
-						<Link to={`/post/${post.id}`}>
-							<div className="post" key={post.id}>
+					<>
+						<div key={post.id} className="post">
+							<Link to={`/post/${post.id}`}>
 								<h2>{post.title}</h2>
-							</div>
-							<br />
-						</Link>
-					</div>
+								<img src={post.image} alt="" />
+							</Link>
+						</div>
+						<br />
+					</>
 				);
 			})}
 			<br />

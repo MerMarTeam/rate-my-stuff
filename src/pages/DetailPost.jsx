@@ -25,7 +25,7 @@ function DetailPost() {
 		<div className="detail-post">
 			<h1>{postObj.title}</h1>
 			<button>
-				<a href="/edit/placeholder">Edit</a>
+				<a href={`/edit/${postId}`}>Edit</a>
 			</button>
 		</div>
 	);
