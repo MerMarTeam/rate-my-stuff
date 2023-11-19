@@ -1,24 +1,21 @@
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from './../api'
 
 function DetailPost() {
 	let { postId } = useParams();
 
 	const [fetching, setFetching] = useState(true)
 
-	const createAPI = 'https://bootcamp-json-server-backend.adaptable.app/posts';
-
 	const [postObj, setPostObj] = useState();
-
 
 	useEffect(() => {
 		getDataFromAPI();
 	}, [postId]);
 
 	function getDataFromAPI() {
-		axios
-			.get(`${createAPI}/${postId}`)
+		api
+			.get(`/posts/${postId}`)
 			.then((response) => {
 				console.log('Connection to API success.....!');
 				setPostObj(response.data);

@@ -1,21 +1,19 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import api from './../api'
 
 function EditPost(params) {
 	const [title, setTitle] = useState('');
 	const [image, setImage] = useState('');
 	const [fetching, setFetching] = useState(true);
 
-	const postAPI = 'https://bootcamp-json-server-backend.adaptable.app/posts';
-
 	let navigate = useNavigate();
 
 	const { postId } = useParams();
 
 	useEffect(() => {
-		axios
-			.get(`${postAPI}/${postId}`)
+		api
+			.get(`/posts/${postId}`)
 			.then((response) => {
 				setTitle(response.data.title);
 				setImage(response.data.image);
@@ -33,8 +31,8 @@ function EditPost(params) {
 			title: title,
 			image: image,
 		};
-		axios
-			.put(`${postAPI}/${postId}`, requestBody)
+		api
+			.put(`/posts/${postId}`, requestBody)
 			.then((response) => {
 				console.log('Connection to API success.....!');
 				setTitle(title);

@@ -1,12 +1,10 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import api from './../api'
 
 function CreatePost(params) {
 	const [title, setTitle] = useState('');
 	const [image, setImage] = useState('');
-
-	const createAPI = 'https://bootcamp-json-server-backend.adaptable.app/posts';
 
 	let navigate = useNavigate();
 
@@ -18,10 +16,11 @@ function CreatePost(params) {
 			image: image,
 		};
 
-		axios
-			.post(createAPI, newObj)
+		api
+			.post('/posts', newObj)
 			.then((response) => {
 				console.log('Connection to API success.....!');
+				console.log(response)
 			})
 			.catch((error) => {
 				console.log('Connection Failed' + '  ' + error);

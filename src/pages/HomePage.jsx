@@ -1,13 +1,13 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import api from './../api'
 
 function HomePage() {
 	const [postsArray, setPostsArray] = useState([]);
 
 	useEffect(() => {
-		axios
-			.get('https://bootcamp-json-server-backend.adaptable.app/posts')
+		api
+			.get('/posts')
 			.then((response) => {
 				console.log('Connection to API success.....!');
 				setPostsArray(response.data);
