@@ -1,13 +1,16 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+  align-items: center;
+  flex-direction: column;
+  padding: 5%;
+}
+
+
+#root a{
+  text-decoration: none;
 }
 
 .logo {
   height: 6em;
-  padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
@@ -33,6 +36,23 @@
   }
 }
 
+.parent-div {
+  display: flex;
+  flex-direction: row;
+}
+
+.homepage{
+  position: inherit;
+}
+
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  width: 15rem;
+  margin-left: 1rem;
+}
+
 .card {
   padding: 2em;
 }
@@ -42,17 +62,35 @@
 }
 
 .post {
-  border: 1px solid white;
+  border: 1px solid #343a40;
+  background-color: #161a1d;
+  text-align: center;
+  margin: 1em 0 1em 0;
 }
 
 .post h2 {
   margin: 25px;
   text-decoration: none;
-  color: yellowgreen;
+  color: white;
+}
+
+.detail-post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* This should be responsive in the future */
 img {
   width: 500px;
   height: auto;
+}
+
+.button {
+  position: sticky;
+  bottom: 3%;
+  float: inherit;
+  left: 3%;
+  color: gray;
+  
 }

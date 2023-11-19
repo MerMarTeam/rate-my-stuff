@@ -76,7 +76,9 @@ function EditPost(params) {
 						/>
 					</label>
 					<br />
-					<button type="submit">Submit</button>
+					<button className="button" type="submit">
+						Submit
+					</button>
 				</form>
 			)}
 		</div>

@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
 	return (
-		<nav>
-			<Link to="/">Home</Link>
+		<nav className="navbar">
+			<Link to="/">
+				<img className="logo" src="src\images\logo.png" alt="" />
+			</Link>
 		</nav>
 	);
 }
