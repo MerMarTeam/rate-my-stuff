@@ -6,6 +6,8 @@ function LoginPage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    let navigate = useNavigate();
+
     function handleFormSubmit(event) {
         event.preventDefault()
 
@@ -17,16 +19,20 @@ function LoginPage() {
         api
             .post('/login', newUser)
             .then((response) => {
-                const { accessToken, user } = response.data
-                localStorage.setItem('accessToken', accessToken);
-                localStorage.setItem('userEmail', user.email)
-                localStorage.setItem('userId', user.id)
+                if (response.status == 200) {
+                    const { accessToken, user } = response.data
+                    localStorage.setItem('accessToken', accessToken);
+                    localStorage.setItem('userEmail', user.email)
+                    localStorage.setItem('userId', user.id)
+                    console.log("Login successfull")
+                    navigate('/');
+                }
             })
             .catch((error) => {
                 console.log('Connection Failed' + '  ' + error);
+                const errorResponse = error.response
+                if (errorResponse.data) console.log(errorResponse.data)
             });
-
-        // navigate('/');
     }
 
     return (

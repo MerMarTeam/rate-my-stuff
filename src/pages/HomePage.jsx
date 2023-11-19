@@ -5,17 +5,22 @@ import api from './../api'
 function HomePage() {
 	const [postsArray, setPostsArray] = useState([]);
 
-	useEffect(() => {
+	function getPostsFromApi() {
 		api
 			.get('/posts')
 			.then((response) => {
-				console.log('Connection to API success.....!');
+				console.log('API: getting posts success');
 				setPostsArray(response.data);
 			})
 			.catch((error) => {
-				console.log('Connection Failed' + '  ' + error);
+				console.log('API: Connection Failed' + '  ' + error);
 			});
+	}
+
+	useEffect(() => {
+		getPostsFromApi();
 	}, []);
+
 	return (
 		<div>
 			<h1>Posts</h1>

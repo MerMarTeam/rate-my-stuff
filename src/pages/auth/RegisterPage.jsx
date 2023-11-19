@@ -18,12 +18,11 @@ function RegisterPage() {
             .post('/register/', newUser)
             .then((response) => {
                 console.log(response)
+                navigate('/');
             })
             .catch((error) => {
                 console.log('Connection Failed' + '  ' + error);
             });
-
-        // navigate('/');
     }
 
     return (

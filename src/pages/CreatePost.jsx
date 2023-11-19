@@ -22,12 +22,13 @@ function CreatePost(params) {
 				// TODO: handle unauthorized response 401
 				console.log('Connection to API success.....!');
 				console.log(response)
+				navigate('/');
 			})
 			.catch((error) => {
 				console.log('Connection Failed' + '  ' + error);
 			});
 
-		navigate('/');
+
 	};
 
 	return (
