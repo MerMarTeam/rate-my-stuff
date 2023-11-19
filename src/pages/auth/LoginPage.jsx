@@ -17,7 +17,10 @@ function LoginPage() {
         api
             .post('/login', newUser)
             .then((response) => {
-                console.log(response)
+                const { accessToken, user } = response.data
+                localStorage.setItem('accessToken', accessToken);
+                localStorage.setItem('userEmail', user.email)
+                localStorage.setItem('userId', user.id)
             })
             .catch((error) => {
                 console.log('Connection Failed' + '  ' + error);
