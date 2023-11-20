@@ -5,7 +5,7 @@ import api from './../api'
 function DetailPost() {
 	let { postId } = useParams();
 
-	const [fetching, setFetching] = useState(true)
+	const [fetching, setFetching] = useState(true);
 
 	const [postObj, setPostObj] = useState();
 
@@ -19,7 +19,7 @@ function DetailPost() {
 			.then((response) => {
 				console.log('Connection to API success.....!');
 				setPostObj(response.data);
-				setFetching(false)
+				setFetching(false);
 			})
 			.catch((error) => {
 				console.log('Connection Failed' + '  ' + error);
@@ -28,16 +28,18 @@ function DetailPost() {
 
 	return (
 		<>
-			{fetching ? <p>Loading....</p> : (
+			{fetching ? (
+				<p>Loading....</p>
+			) : (
 				<div className="detail-post">
 					<h1>{postObj.title}</h1>
 					<br />
 					<img src={postObj.image} alt="" />
 
 					<br />
-					<button>
-						<Link to={`/edit/${postId}`}>Edit</Link>
-					</button>
+					<Link className="button" to={`/edit/${postId}`}>
+						<button>Edit</button>
+					</Link>
 				</div>
 			)}
 		</>

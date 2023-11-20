@@ -24,12 +24,16 @@ function Navbar(props) {
 	}
 
 	return (
-		<nav>
-			<button><Link to="/">Home</Link></button>
+		<nav className="navbar">
+			<Link to="/">
+				<img className="logo" src="src\images\logo.png" alt="" />
+			</Link>
+			
 			<button><Link to="/register">Register</Link></button>
 			<button><Link to="/login">Login</Link></button>
 			<button onClick={handleLogout}>Logout</button>
 			{userEmail && <p>User email: {userEmail}</p>}
+			
 		</nav>
 	);
 }
