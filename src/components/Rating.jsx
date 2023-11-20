@@ -65,6 +65,7 @@ function Rating(props) {
         }
         putDataToApi(userRating);
         setGivenRating(userRating);
+        getDataFromApi(); // important to have here, even if the very first time user gives rating it does not work
         // TODO: change the style of the stars depending on which rating button is clicked
     }
 
