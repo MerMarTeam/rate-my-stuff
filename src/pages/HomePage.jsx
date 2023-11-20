@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from './../api'
+import Rating from '../components/Rating';
 
 function HomePage() {
 	const [postsArray, setPostsArray] = useState([]);
@@ -34,6 +35,7 @@ function HomePage() {
 								<h2>{post.title}</h2>
 								<img src={post.image} alt="" />
 							</Link>
+							<Rating postId={post.id} />
 						</div>
 					);
 				})}
