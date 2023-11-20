@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import api from './../api'
+
 
 function EditPost(params) {
 	const [title, setTitle] = useState('');
 	const [image, setImage] = useState('');
 	const [fetching, setFetching] = useState(true);
+
 
 	let navigate = useNavigate();
 
@@ -44,40 +46,55 @@ function EditPost(params) {
 			});
 	};
 
+	let handleDelete = (event) => {
+		api
+			.delete(`/posts/${postId}`)
+			.then((response) => {
+				if (response.status == 200) console.log('API: delete post successful');
+				else console.log("API: ", response)
+			})
+			.catch((error) => {
+				console.log('Connection Failed' + '  ' + error);
+			});
+	}
+
 	return (
 		<div className="edit-page">
 			{fetching ? (
 				<h1>Loading...</h1>
 			) : (
-				<form onSubmit={handleSubmit}>
-					<label>
-						Title:
-						<input
-							type="text"
-							name="title"
-							value={title}
-							onChange={(event) => {
-								setTitle(event.target.value);
-							}}
-						/>
-					</label>
-					<br />
-					<label>
-						Link for Image:
-						<input
-							type="link"
-							name="image"
-							value={image}
-							onChange={(event) => {
-								setImage(event.target.value);
-							}}
-						/>
-					</label>
-					<br />
-					<button className="button" type="submit">
-						Submit
-					</button>
-				</form>
+				<>
+					<form onSubmit={handleSubmit}>
+						<label>
+							Title:
+							<input
+								type="text"
+								name="title"
+								value={title}
+								onChange={(event) => {
+									setTitle(event.target.value);
+								}}
+							/>
+						</label>
+						<br />
+						<label>
+							Link for Image:
+							<input
+								type="link"
+								name="image"
+								value={image}
+								onChange={(event) => {
+									setImage(event.target.value);
+								}}
+							/>
+						</label>
+						<br />
+						<button className="button" type="submit">
+							Submit
+						</button>
+					</form>
+					<button onClick={handleDelete}><Link to="/">Delete</Link></button>
+				</>
 			)}
 		</div>
 	);
