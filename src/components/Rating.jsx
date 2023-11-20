@@ -10,7 +10,7 @@ function Rating(props) {
 
     function calculateAverageRating() {
         let sum = 0;
-        
+
         if (givenRating > 0) sum = givenRating;
 
         for (let i = 0; i < postRatings.length; i++) {
@@ -59,7 +59,6 @@ function Rating(props) {
     }
 
     function handleStarClick(event) {
-        getDataFromApi();
         let userRating = 0;
         for (let i = 1; i <= 5; i++) {
             if (event.target.id == `rating-${i}`) userRating = i;
@@ -79,7 +78,6 @@ function Rating(props) {
         }
     }, [postRatings, givenRating]);
 
-
     return (
 
         <div className='post-rating'>
@@ -92,7 +90,6 @@ function Rating(props) {
             <button id="rating-4" onClick={handleStarClick}>4</button>
             <button id="rating-5" onClick={handleStarClick}>5</button>
             <p>Given rating: {givenRating}</p>
-            <button onClick={calculateAverageRating}>CALCULATE</button>
         </div>
     )
 }
