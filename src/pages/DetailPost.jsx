@@ -10,11 +10,14 @@ function DetailPost() {
 
 	const [postObj, setPostObj] = useState();
 
+	const [comments, setComments] = useState();
+
 	useEffect(() => {
-		getDataFromAPI();
+		getPostsWithRatingsFromAPI();
+		getCommentsFromAPI();
 	}, [postId]);
 
-	function getDataFromAPI() {
+	function getPostsWithRatingsFromAPI() {
 		api
 			.get(`/posts/${postId}?_embed=ratings`)
 			.then((response) => {
@@ -41,7 +44,24 @@ function DetailPost() {
 				console.log('API: Connection Failed' + '  ' + error);
 			});
 
-		getDataFromAPI();
+		getPostsWithRatingsFromAPI();
+	}
+
+	function getCommentsFromAPI() {
+		api
+			.get(`/posts/${postId}/comments`)
+			.then((response) => {
+				console.log('API: Gettings comments successfull');
+				setComments(response.data);
+			})
+			.catch((error) => {
+				console.log('Connection Failed' + '  ' + error);
+			});
+	}
+
+	const commentStyle = {
+		border: "1px solid white",
+		padding: '20px'
 	}
 
 	return (
@@ -58,7 +78,14 @@ function DetailPost() {
 					<Link className="button" to={`/edit/${postId}`}>
 						<button>Edit</button>
 					</Link>
-
+					<div>
+						<h2>Comments</h2>
+						{comments && comments.map((comment) => {
+							return (
+								<div style={commentStyle} key={comment.id}>{comment.text}</div>
+							)
+						})}
+					</div>
 				</div>
 			)}
 		</>
