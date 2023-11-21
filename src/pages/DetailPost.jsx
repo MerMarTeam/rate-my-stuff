@@ -64,9 +64,11 @@ function DetailPost() {
 	function handleCommentSubmit(event) {
 		event.preventDefault();
 
+		const currentTime = new Date();
 		let newCommentObject = {
 			text: commentText,
 			postId: parseInt(postId),
+			date: currentTime.toLocaleString()
 		}
 
 		api
@@ -79,6 +81,7 @@ function DetailPost() {
 			});
 
 		getCommentsFromAPI();
+		setCommentText('');
 	}
 
 	const handleTextareaChange = (event) => {
@@ -115,9 +118,12 @@ function DetailPost() {
 						</form>
 
 						<h2>Comments</h2>
-						{comments && comments.map((comment) => {
+						{comments && [...comments].reverse().map((comment) => {
 							return (
-								<div style={commentStyle} key={comment.id}>{comment.text}</div>
+								<div style={commentStyle} key={comment.id}>
+									<div>{comment.text}</div>
+									<sup>{comment.date}</sup>
+								</div>
 							)
 						})
 						}
