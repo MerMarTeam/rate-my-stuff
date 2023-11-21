@@ -8,10 +8,27 @@ function HomePage() {
 
 	function getPostsFromApi() {
 		api
-			.get('/posts')
+			// .get('/posts')
+			.get('/posts?_embed=ratings')
 			.then((response) => {
 				console.log('API: getting posts success');
+				console.log('----------------------------------', response.data)
 				setPostsArray(response.data);
+			})
+			.catch((error) => {
+				console.log('API: Connection Failed' + '  ' + error);
+			});
+	}
+
+	function postNewRating(ratingObject) {
+		api
+			.post(`/ratings`, ratingObject, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			})
+			.then((response) => {
+				console.log('API: putting new rating on a post');
 			})
 			.catch((error) => {
 				console.log('API: Connection Failed' + '  ' + error);
@@ -35,7 +52,8 @@ function HomePage() {
 								<h2>{post.title}</h2>
 								<img src={post.image} alt="" />
 							</Link>
-							<Rating postId={post.id} />
+							{/* <Rating postId={post.id} /> */}
+							<Rating post={post} postNewRating={postNewRating} />
 						</div>
 					);
 				})}

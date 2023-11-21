@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import api from './../api'
+import Rating from '../components/Rating';
 
 function DetailPost() {
 	let { postId } = useParams();
@@ -15,7 +16,7 @@ function DetailPost() {
 
 	function getDataFromAPI() {
 		api
-			.get(`/posts/${postId}`)
+			.get(`/posts/${postId}?_embed=ratings`)
 			.then((response) => {
 				console.log('Connection to API success.....!');
 				setPostObj(response.data);
@@ -23,6 +24,17 @@ function DetailPost() {
 			})
 			.catch((error) => {
 				console.log('Connection Failed' + '  ' + error);
+			});
+	}
+
+	function postNewRating(postId, ratingObject) {
+		api
+			.post(`/posts/${postId}/ratings`, ratingObject)
+			.then((response) => {
+				console.log('API: putting new rating on a post');
+			})
+			.catch((error) => {
+				console.log('API: Connection Failed' + '  ' + error);
 			});
 	}
 
@@ -35,11 +47,12 @@ function DetailPost() {
 					<h1>{postObj.title}</h1>
 					<br />
 					<img src={postObj.image} alt="" />
-
+					<Rating post={postObj} postNewRating={postNewRating} />
 					<br />
 					<Link className="button" to={`/edit/${postId}`}>
 						<button>Edit</button>
 					</Link>
+
 				</div>
 			)}
 		</>

@@ -3,59 +3,26 @@ import api from './../api'
 
 function Rating(props) {
     let [givenRating, setGivenRating] = useState(0)
-
-    let [postRatings, setPostRatings] = useState([])
-
     let [averageRating, setAverageRating] = useState(0)
 
     function calculateAverageRating() {
-        let sum = 0;
+        if (props.post.ratings) {
+            let sum = 0;
 
-        if (givenRating > 0) sum = givenRating;
+            if (givenRating > 0) sum = givenRating;
+            for (let i = 0; i < props.post.ratings.length; i++) {
+                sum += props.post.ratings[i].starsCount
+            }
 
-        for (let i = 0; i < postRatings.length; i++) {
-            sum += postRatings[i].starsCount
+            let average;
+            // If the user provided a new rating, we shall divide by one more
+            if (givenRating > 0) {
+                average = Math.ceil(sum / (props.post.ratings.length + 1));
+            } else {
+                average = Math.ceil(sum / props.post.ratings.length)
+            }
+            setAverageRating(average)
         }
-
-        let average;
-        // If the user provided a new rating, we shall divide by one more
-        if (givenRating > 0) {
-            average = Math.ceil(sum / (postRatings.length + 1));
-        } else {
-            average = Math.ceil(sum / postRatings.length)
-        }
-        setAverageRating(average)
-    }
-
-    function getDataFromApi() {
-        api
-            .get(`/posts/${props.postId}/ratings`)
-            .then((response) => {
-                console.log('API: getting posts success');
-                setPostRatings(response.data);
-
-            })
-            .catch((error) => {
-                console.log('API: Connection Failed' + '  ' + error);
-            });
-    }
-
-    function putDataToApi(newRatingNumber) {
-        let newRatingObject = {
-            // TODO when user auth works
-            // "userId": 1,
-            starsCount: newRatingNumber,
-            postId: props.postId,
-        };
-
-        api
-            .post(`/posts/${props.postId}/ratings`, newRatingObject)
-            .then((response) => {
-                console.log('API: putting new rating on a post');
-            })
-            .catch((error) => {
-                console.log('API: Connection Failed' + '  ' + error);
-            });
     }
 
     function handleStarClick(event) {
@@ -63,21 +30,23 @@ function Rating(props) {
         for (let i = 1; i <= 5; i++) {
             if (event.target.id == `rating-${i}`) userRating = i;
         }
-        putDataToApi(userRating);
+
         setGivenRating(userRating);
-        getDataFromApi(); // important to have here, even if the very first time user gives rating it does not work
+        let newRatingObject = {
+            starsCount: userRating,
+            postId: props.post.id
+        }
+        props.postNewRating(newRatingObject)
+
         // TODO: change the style of the stars depending on which rating button is clicked
     }
 
     useEffect(() => {
-        getDataFromApi();
-    }, []);
 
-    useEffect(() => {
-        if (postRatings.length) {
+        if (props.post.ratings) {
             calculateAverageRating();
         }
-    }, [postRatings, givenRating]);
+    }, [givenRating]);
 
     return (
 
