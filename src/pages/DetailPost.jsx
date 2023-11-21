@@ -27,15 +27,21 @@ function DetailPost() {
 			});
 	}
 
-	function postNewRating(postId, ratingObject) {
+	function postNewRating(ratingObject) {
 		api
-			.post(`/posts/${postId}/ratings`, ratingObject)
+			.post(`/ratings`, ratingObject, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			})
 			.then((response) => {
 				console.log('API: putting new rating on a post');
 			})
 			.catch((error) => {
 				console.log('API: Connection Failed' + '  ' + error);
 			});
+
+		getDataFromAPI();
 	}
 
 	return (
