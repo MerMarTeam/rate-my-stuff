@@ -77,6 +77,8 @@ function DetailPost() {
 			.catch((error) => {
 				console.log('Connection Failed' + '  ' + error);
 			});
+
+		getCommentsFromAPI();
 	}
 
 	const handleTextareaChange = (event) => {
