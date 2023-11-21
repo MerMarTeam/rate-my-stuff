@@ -25,6 +25,7 @@ function Navbar(props) {
 
 	return (
 		<nav className="navbar">
+			<i class="fa-solid fa-star fa-spin fa-2xl"></i>
 			<Link to="/">
 				<img className="logo" src="../src/images/logo.png" alt="" />
 			</Link>

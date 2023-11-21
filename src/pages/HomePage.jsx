@@ -48,9 +48,9 @@ function HomePage() {
 				{postsArray.map((post, i) => {
 					return (
 						<div key={post.id} className="post">
-							<p>comments counts: {post.comments && post.comments.length}</p>
-
 							<Link to={`/posts/${post.id}`}>
+								<p className='text-secondary'><i className="fa-regular fa-comments fa-lg" style={{ color: "#bcb8b8" }}></i>{post.comments && post.comments.length}</p>
+
 								<h2>{post.title}</h2>
 								<img src={post.image} alt="" />
 							</Link>

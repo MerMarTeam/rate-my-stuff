@@ -11,17 +11,19 @@ import RegisterPage from './pages/auth/RegisterPage';
 function App() {
 	return (
 		<>
-			<Navbar />
-			<Routes>
-				<Route path="/" element={<HomePage />} />
+			<div className='text-light'>
+				<Navbar />
+				<Routes>
+					<Route path="/" element={<HomePage />} />
 
-				<Route path="/create" element={<CreatePost />} />
-				<Route path="/posts/:postId" element={<DetailPost />} />
-				<Route path="/edit/:postId" element={<EditPost />} />
+					<Route path="/create" element={<CreatePost />} />
+					<Route path="/posts/:postId" element={<DetailPost />} />
+					<Route path="/edit/:postId" element={<EditPost />} />
 
-				<Route path="/register" element={<RegisterPage />} />
-				<Route path="/login" element={<LoginPage />} />
-			</Routes>
+					<Route path="/register" element={<RegisterPage />} />
+					<Route path="/login" element={<LoginPage />} />
+				</Routes>
+			</div>
 		</>
 	);
 }

@@ -60,42 +60,59 @@ function EditPost(params) {
 
 	return (
 		<div className="edit-page">
-			{fetching ? (
-				<h1>Loading...</h1>
-			) : (
-				<>
-					<form onSubmit={handleSubmit}>
-						<label>
-							Title:
-							<input
-								type="text"
-								name="title"
-								value={title}
-								onChange={(event) => {
-									setTitle(event.target.value);
-								}}
-							/>
-						</label>
-						<br />
-						<label>
-							Link for Image:
-							<input
-								type="link"
-								name="image"
-								value={image}
-								onChange={(event) => {
-									setImage(event.target.value);
-								}}
-							/>
-						</label>
-						<br />
-						<button className="button" type="submit">
-							Submit
-						</button>
-					</form>
-					<button onClick={handleDelete}><Link to="/">Delete</Link></button>
-				</>
-			)}
+			<div className='container'>
+				{fetching ? (
+					<h1>Loading...</h1>
+				) : (
+					<>
+						<form onSubmit={handleSubmit}>
+							<div className='from-group'>
+								<label htmlFor='title-input' className=''>Title:</label>
+								<input
+									type="text"
+									name="title"
+									id='title-input'
+									className='form-control'
+									value={title}
+									onChange={(event) => {
+										setTitle(event.target.value);
+									}}
+								/>
+
+							</div>
+
+							<br />
+
+							<div className='form-group'>
+								<label htmlFor='image-input'>Link for Image:</label>
+								<input
+									type="link"
+									name="image"
+									id='image-input'
+									className='form-control'
+									value={image}
+									onChange={(event) => {
+										setImage(event.target.value);
+									}}
+								/>
+							</div>
+
+							<br />
+
+							<div className='row'>
+								<div className='col-md-6'>
+									<button className="btn btn-primary" type="submit">Submit</button>
+								</div>
+								<div className='col-md-6'>
+									<Link to="/"><button onClick={handleDelete} className='btn btn-danger float-end'>Delete</button></Link>
+								</div>
+							</div>
+
+						</form>
+
+					</>
+				)}
+			</div>
 		</div>
 	);
 }
