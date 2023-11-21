@@ -8,7 +8,7 @@ function Rating(props) {
     function calculateAverageRating() {
         if (props.post.ratings) {
             let sum = 0;
-
+            
             if (givenRating > 0) sum = givenRating;
             for (let i = 0; i < props.post.ratings.length; i++) {
                 sum += props.post.ratings[i].starsCount
@@ -32,6 +32,7 @@ function Rating(props) {
         }
 
         setGivenRating(userRating);
+
         let newRatingObject = {
             starsCount: userRating,
             postId: props.post.id
@@ -52,7 +53,7 @@ function Rating(props) {
 
         <div className='post-rating'>
             <p>Average rating: {
-                averageRating == 0 ? "no rating yet" : averageRating
+                averageRating ? averageRating : "no rating yet"
             }</p>
             <button id="rating-1" onClick={handleStarClick}>1</button>
             <button id="rating-2" onClick={handleStarClick}>2</button>

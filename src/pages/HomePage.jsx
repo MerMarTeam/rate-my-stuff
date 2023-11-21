@@ -8,11 +8,9 @@ function HomePage() {
 
 	function getPostsFromApi() {
 		api
-			// .get('/posts')
 			.get('/posts?_embed=ratings')
 			.then((response) => {
 				console.log('API: getting posts success');
-				console.log('----------------------------------', response.data)
 				setPostsArray(response.data);
 			})
 			.catch((error) => {
@@ -33,6 +31,8 @@ function HomePage() {
 			.catch((error) => {
 				console.log('API: Connection Failed' + '  ' + error);
 			});
+
+		getPostsFromApi();
 	}
 
 	useEffect(() => {
