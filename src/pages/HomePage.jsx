@@ -8,7 +8,7 @@ function HomePage() {
 
 	function getPostsFromApi() {
 		api
-			.get('/posts?_embed=ratings')
+			.get('/posts?_embed=ratings&_embed=comments')
 			.then((response) => {
 				console.log('API: getting posts success');
 				setPostsArray(response.data);
@@ -48,6 +48,8 @@ function HomePage() {
 				{postsArray.map((post, i) => {
 					return (
 						<div key={post.id} className="post">
+							<p>comments counts: {post.comments && post.comments.length}</p>
+
 							<Link to={`/posts/${post.id}`}>
 								<h2>{post.title}</h2>
 								<img src={post.image} alt="" />
