@@ -12,6 +12,8 @@ function DetailPost() {
 
 	const [comments, setComments] = useState();
 
+	const [commentText, setCommentText] = useState('')
+
 	useEffect(() => {
 		getPostsWithRatingsFromAPI();
 		getCommentsFromAPI();
@@ -59,6 +61,28 @@ function DetailPost() {
 			});
 	}
 
+	function handleCommentSubmit(event) {
+		event.preventDefault();
+
+		let newCommentObject = {
+			text: commentText,
+			postId: parseInt(postId),
+		}
+
+		api
+			.post(`/comments`, newCommentObject)
+			.then((response) => {
+				console.log('API: sending new comment successfull');
+			})
+			.catch((error) => {
+				console.log('Connection Failed' + '  ' + error);
+			});
+	}
+
+	const handleTextareaChange = (event) => {
+		setCommentText(event.target.value);
+	};
+
 	const commentStyle = {
 		border: "1px solid white",
 		padding: '20px'
@@ -79,12 +103,22 @@ function DetailPost() {
 						<button>Edit</button>
 					</Link>
 					<div>
+						<form onSubmit={handleCommentSubmit}>
+							<textarea name="" id="comment-text"
+								cols="30" rows="10"
+								value={commentText} onChange={handleTextareaChange}
+								placeholder='Your comment here...'>
+							</textarea>
+							<button type='submit'>Comment</button>
+						</form>
+
 						<h2>Comments</h2>
 						{comments && comments.map((comment) => {
 							return (
 								<div style={commentStyle} key={comment.id}>{comment.text}</div>
 							)
-						})}
+						})
+						}
 					</div>
 				</div>
 			)}
