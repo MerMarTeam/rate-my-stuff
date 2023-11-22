@@ -52,7 +52,7 @@ function HomePage() {
 								<h2>{post.title}</h2>
 								<img src={post.image} alt="" />
 							</Link>
-							<dl className="description">{post.comment}</dl>
+							<dl className="description">{post.description}</dl>
 
 							{/* <Rating postId={post.id} /> */}
 							<Rating post={post} postNewRating={postNewRating} />

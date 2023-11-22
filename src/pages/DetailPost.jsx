@@ -102,7 +102,7 @@ function DetailPost() {
 					<h1>{postObj.title}</h1>
 					<br />
 					<img src={postObj.image} alt="" />
-					<dl className="description-detail">{postObj.comment}</dl>
+					<dl className="description-detail">{postObj.description}</dl>
 					<Rating post={postObj} postNewRating={postNewRating} />
 					<br />
 					<Link className="button" to={`/edit/${postId}`}>
@@ -119,6 +119,7 @@ function DetailPost() {
 								onChange={handleTextareaChange}
 								placeholder="Your comment here..."
 							></textarea>
+							<br />
 							<button type="submit">Comment</button>
 						</form>
 
