@@ -66,6 +66,7 @@ body {
   background-color: #161a1d;
   text-align: center;
   margin: 1em 0 1em 0;
+  max-width: 550px;
 }
 
 .post h2 {
@@ -93,4 +94,8 @@ img {
   left: 3%;
   color: gray;
   
+}
+
+.description {
+  margin: 1em;
 }

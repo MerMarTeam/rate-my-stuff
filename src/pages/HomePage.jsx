@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import api from './../api'
+import api from './../api';
 import Rating from '../components/Rating';
 
 function HomePage() {
@@ -8,9 +8,11 @@ function HomePage() {
 
 	function getPostsFromApi() {
 		api
-			.get('/posts?_embed=ratings&_embed=comments')
+			// .get('/posts')
+			.get('/posts?_embed=ratings')
 			.then((response) => {
 				console.log('API: getting posts success');
+				console.log('----------------------------------', response.data);
 				setPostsArray(response.data);
 			})
 			.catch((error) => {
@@ -31,8 +33,6 @@ function HomePage() {
 			.catch((error) => {
 				console.log('API: Connection Failed' + '  ' + error);
 			});
-
-		getPostsFromApi();
 	}
 
 	useEffect(() => {
@@ -49,11 +49,11 @@ function HomePage() {
 					return (
 						<div key={post.id} className="post">
 							<Link to={`/posts/${post.id}`}>
-								<p className='text-secondary'><i className="fa-regular fa-comments fa-lg" style={{ color: "#bcb8b8" }}></i>{post.comments && post.comments.length}</p>
-
 								<h2>{post.title}</h2>
 								<img src={post.image} alt="" />
 							</Link>
+							<dl className="description">{post.comment}</dl>
+
 							{/* <Rating postId={post.id} /> */}
 							<Rating post={post} postNewRating={postNewRating} />
 						</div>
