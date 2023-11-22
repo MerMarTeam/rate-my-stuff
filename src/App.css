@@ -1,12 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  align-items: center;
   flex-direction: column;
   padding: 5%;
 }
 
-
 #root a{
   text-decoration: none;
+}
+
+.row::after {
+  clear:both;
+  display:table;
+}
+
+.aside {
+  text-align: center;
 }
 
 .logo {
@@ -37,24 +48,28 @@ body {
 }
 
 .parent-div {
+  margin: 0;
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
+  width: 100%;
 }
 
 .homepage{
   position: inherit;
+  margin-left: 10%;
 }
 
 .side-panel {
   display: flex;
   flex-direction: column;
   position: sticky;
-  width: 15rem;
-  margin-left: 1rem;
+  width: 100%;
+  margin-left: 5%;
 }
 
 .card {
-  padding: 2em;
+  padding: 5%;
 }
 
 .read-the-docs {
@@ -66,11 +81,11 @@ body {
   background-color: #161a1d;
   text-align: center;
   margin: 1em 0 1em 0;
-  max-width: 550px;
+  max-width: 100%;
 }
 
 .post h2 {
-  margin: 25px;
+  margin: 5%;
   text-decoration: none;
   color: white;
 }
@@ -83,7 +98,7 @@ body {
 
 /* This should be responsive in the future */
 img {
-  width: 500px;
+  width: 95%;
   height: auto;
 }
 
@@ -97,9 +112,9 @@ img {
 }
 
 .description {
-  margin: 1em;
+  margin: 5%;
 }
 
 .description-detail {
-  max-width: 500px;
+  max-width: 95%;
 }
