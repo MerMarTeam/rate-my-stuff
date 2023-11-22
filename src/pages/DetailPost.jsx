@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import api from './../api'
+import api from './../api';
 import Rating from '../components/Rating';
 
 function DetailPost() {
@@ -12,7 +12,7 @@ function DetailPost() {
 
 	const [comments, setComments] = useState();
 
-	const [commentText, setCommentText] = useState('')
+	const [commentText, setCommentText] = useState('');
 
 	useEffect(() => {
 		getPostsWithRatingsFromAPI();
@@ -68,8 +68,8 @@ function DetailPost() {
 		let newCommentObject = {
 			text: commentText,
 			postId: parseInt(postId),
-			date: currentTime.toLocaleString()
-		}
+			date: currentTime.toLocaleString(),
+		};
 
 		api
 			.post(`/comments`, newCommentObject)
@@ -89,9 +89,9 @@ function DetailPost() {
 	};
 
 	const commentStyle = {
-		border: "1px solid white",
-		padding: '20px'
-	}
+		border: '1px solid white',
+		padding: '20px',
+	};
 
 	return (
 		<>
@@ -102,6 +102,7 @@ function DetailPost() {
 					<h1>{postObj.title}</h1>
 					<br />
 					<img src={postObj.image} alt="" />
+					<dl className="description-detail">{postObj.comment}</dl>
 					<Rating post={postObj} postNewRating={postNewRating} />
 					<br />
 					<Link className="button" to={`/edit/${postId}`}>
@@ -109,24 +110,28 @@ function DetailPost() {
 					</Link>
 					<div>
 						<form onSubmit={handleCommentSubmit}>
-							<textarea name="" id="comment-text"
-								cols="30" rows="10"
-								value={commentText} onChange={handleTextareaChange}
-								placeholder='Your comment here...'>
-							</textarea>
-							<button type='submit'>Comment</button>
+							<textarea
+								name=""
+								id="comment-text"
+								cols="30"
+								rows="10"
+								value={commentText}
+								onChange={handleTextareaChange}
+								placeholder="Your comment here..."
+							></textarea>
+							<button type="submit">Comment</button>
 						</form>
 
 						<h2>Comments</h2>
-						{comments && [...comments].reverse().map((comment) => {
-							return (
-								<div style={commentStyle} key={comment.id}>
-									<div>{comment.text}</div>
-									<sup>{comment.date}</sup>
-								</div>
-							)
-						})
-						}
+						{comments &&
+							[...comments].reverse().map((comment) => {
+								return (
+									<div style={commentStyle} key={comment.id}>
+										<div>{comment.text}</div>
+										<sup>{comment.date}</sup>
+									</div>
+								);
+							})}
 					</div>
 				</div>
 			)}

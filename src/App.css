@@ -99,3 +99,7 @@ img {
 .description {
   margin: 1em;
 }
+
+.description-detail {
+  max-width: 500px;
+}
