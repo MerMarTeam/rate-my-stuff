@@ -4,7 +4,7 @@
 
 body {
   flex-direction: column;
-  padding: 5%;
+  padding: 2%;
 }
 
 #root a{
@@ -55,9 +55,13 @@ body {
   width: 100%;
 }
 
+textarea {
+  resize: none;
+}
+
 .homepage{
   position: inherit;
-  margin-left: 10%;
+  margin: 1%;
 }
 
 .side-panel {
@@ -65,7 +69,7 @@ body {
   flex-direction: column;
   position: sticky;
   width: 100%;
-  margin-left: 5%;
+  margin-left: 2%;
 }
 
 .card {
@@ -117,4 +121,14 @@ img {
 
 .description-detail {
   max-width: 95%;
+}
+
+.comment-zone {
+  border: 1px solid gray;
+  padding: 2%;
+  margin: 1%;
+}
+
+.comment-date {
+  float: right;
 }

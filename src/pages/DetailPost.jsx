@@ -88,11 +88,6 @@ function DetailPost() {
 		setCommentText(event.target.value);
 	};
 
-	const commentStyle = {
-		border: '1px solid white',
-		padding: '20px',
-	};
-
 	return (
 		<>
 			{fetching ? (
@@ -113,7 +108,7 @@ function DetailPost() {
 							<textarea
 								name=""
 								id="comment-text"
-								cols="30"
+								cols="110"
 								rows="10"
 								value={commentText}
 								onChange={handleTextareaChange}
@@ -127,9 +122,10 @@ function DetailPost() {
 						{comments &&
 							[...comments].reverse().map((comment) => {
 								return (
-									<div style={commentStyle} key={comment.id}>
+									<div className="comment-zone" key={comment.id}>
+										<sup>User:</sup>
 										<div>{comment.text}</div>
-										<sup>{comment.date}</sup>
+										<sub className="comment-date">{comment.date}</sub>
 									</div>
 								);
 							})}
