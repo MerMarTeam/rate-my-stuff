@@ -100,9 +100,9 @@ function DetailPost() {
 					<Rating post={postObj} postNewRating={postNewRating} />
 					<br />
 					<Link className="button" to={`/edit/${postId}`}>
-						<button>Edit</button>
+						<button className='btn btn-primary btn-lg'>Edit</button>
 					</Link>
-					<div>
+					<div className='comments-section'>
 						<form onSubmit={handleCommentSubmit}>
 							<textarea
 								name=""
@@ -114,7 +114,7 @@ function DetailPost() {
 								placeholder="Your comment here..."
 							></textarea>
 							<br />
-							<button type="submit">Comment</button>
+							<button type="submit" className='btn btn-primary' id='submit-comment'>Comment</button>
 						</form>
 
 						<h2>Comments</h2>

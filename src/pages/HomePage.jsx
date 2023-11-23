@@ -86,8 +86,11 @@ function HomePage() {
 				})}
 				<br />
 				<Link to="/create">
-					<button className="button">Create Post</button>
+					<button id="create-post-button" className="btn btn-primary btn-circle">
+						<p>+</p>
+					</button>
 				</Link>
+
 			</div>
 			<div className="side-panel row aside">
 				<section>

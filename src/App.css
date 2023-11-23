@@ -88,7 +88,7 @@ textarea {
   border: 1px solid #343a40;
   background-color: #161a1d;
   text-align: center;
-  margin: 1em 0 1em 0;
+  margin: 1em 0 1em 2em;
   max-width: 100%;
 }
 
@@ -154,4 +154,35 @@ img {
 .create-page {
   align-items: center;
   text-align: right;
+}
+
+#create-post-button {
+  width: 100px;
+  height: 100px;
+  padding: 13px 18px;
+  border-radius: 60px;
+
+  position: sticky;
+  float: inherit;
+  bottom: 3%;
+  left: 3%;
+
+  text-decoration: none;
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#create-post-button p {
+  font-size: 6em;
+}
+
+.comments-section {
+  padding-top: 5%
+}
+
+#submit-comment {
+  float: inline-end;
 }
