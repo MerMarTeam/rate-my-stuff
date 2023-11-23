@@ -29,15 +29,6 @@ function Navbar(props) {
 
 				<img className="logo" src={logo} alt="" />
 			</Link>
-
-			<button>
-				<Link to="/register">Register</Link>
-			</button>
-			<button>
-				<Link to="/login">Login</Link>
-			</button>
-			<button onClick={handleLogout}>Logout</button>
-			{userEmail && <p>User email: {userEmail}</p>}
 		</nav>
 	);
 }
