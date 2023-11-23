@@ -133,3 +133,8 @@ img {
 .comment-date {
   float: right;
 }
+
+.comments-count {
+  width: 10%;
+  margin: 1%;
+}

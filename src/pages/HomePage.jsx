@@ -38,7 +38,6 @@ function HomePage() {
 		getPostsFromApi();
 	}, []);
 
-
 	return (
 		<div className="parent-div">
 			<div className="homepage">
@@ -47,9 +46,7 @@ function HomePage() {
 				</div>
 				{[...postsArray].reverse().map((post, i) => {
 					return (
-
 						<div key={post.id} className="post">
-
 							<Link to={`/posts/${post.id}`}>
 								<h2>{post.title}</h2>
 								<img src={post.image} alt="" />
@@ -59,16 +56,32 @@ function HomePage() {
 
 							<Rating post={post} postNewRating={postNewRating} />
 
-							<div className='comments-count'>
-								<i className="fa-regular fa-comments fa-2xl" style={{ color: "#ffffff" }}
-									onMouseEnter={(event) => { event.target.className = "fa-regular fa-comments fa-2xl fa-beat" }}
-									onMouseLeave={(event) => { event.target.className = "fa-regular fa-comments fa-2xl" }}
-								>
-								</i>
-								<h3 style={{ display: 'inline', marginLeft: '10px' }}>{post.comments.length}</h3>
+							<div className="comments-count">
+								<Link to={`/posts/${post.id}`}>
+									<i
+										className="fa-regular fa-comments fa-xl"
+										style={{ color: '#ffffff' }}
+										onMouseEnter={(event) => {
+											event.target.className =
+												'fa-regular fa-comments fa-xl fa-beat';
+										}}
+										onMouseLeave={(event) => {
+											event.target.className = 'fa-regular fa-comments fa-xl';
+										}}
+									></i>
+									<h4
+										style={{
+											display: 'inline',
+											textDecoration: 'none',
+											color: 'white',
+											marginLeft: '10px',
+										}}
+									>
+										{post.comments.length}
+									</h4>
+								</Link>
 							</div>
 						</div>
-
 					);
 				})}
 				<br />
