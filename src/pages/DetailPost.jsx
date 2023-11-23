@@ -12,7 +12,7 @@ function DetailPost() {
 
 	const [comments, setComments] = useState();
 
-	const [commentText, setCommentText] = useState('');
+	const [commentText, setCommentText] = useState();
 
 	useEffect(() => {
 		getPostsWithRatingsFromAPI();
@@ -75,13 +75,12 @@ function DetailPost() {
 			.post(`/comments`, newCommentObject)
 			.then((response) => {
 				console.log('API: sending new comment successfull');
+				getCommentsFromAPI();
+				setCommentText('');
 			})
 			.catch((error) => {
 				console.log('Connection Failed' + '  ' + error);
 			});
-
-		getCommentsFromAPI();
-		setCommentText('');
 	}
 
 	const handleTextareaChange = (event) => {

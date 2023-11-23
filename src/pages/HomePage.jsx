@@ -8,8 +8,7 @@ function HomePage() {
 
 	function getPostsFromApi() {
 		api
-			// .get('/posts')
-			.get('/posts?_embed=ratings')
+			.get('/posts?_embed=ratings&_embed=comments')
 			.then((response) => {
 				console.log('API: getting posts success');
 				console.log('----------------------------------', response.data);
@@ -39,6 +38,7 @@ function HomePage() {
 		getPostsFromApi();
 	}, []);
 
+
 	return (
 		<div className="parent-div">
 			<div className="homepage">
@@ -47,16 +47,28 @@ function HomePage() {
 				</div>
 				{postsArray.map((post, i) => {
 					return (
+
 						<div key={post.id} className="post">
+
 							<Link to={`/posts/${post.id}`}>
 								<h2>{post.title}</h2>
 								<img src={post.image} alt="" />
 							</Link>
+
 							<dl className="description">{post.description}</dl>
 
-							{/* <Rating postId={post.id} /> */}
+							<div className='comments-count'>
+								<i className="fa-regular fa-comments fa-2xl" style={{ color: "#ffffff" }}
+									onMouseEnter={(event) => { event.target.className = "fa-regular fa-comments fa-2xl fa-beat" }}
+									onMouseLeave={(event) => { event.target.className = "fa-regular fa-comments fa-2xl" }}
+								>
+								</i>
+								<h3 style={{ display: 'inline', marginLeft: '10px' }}>{post.comments.length}</h3>
+							</div>
+
 							<Rating post={post} postNewRating={postNewRating} />
 						</div>
+
 					);
 				})}
 				<br />
