@@ -92,7 +92,7 @@ function HomePage() {
 				</Link>
 
 			</div>
-			<div className="side-panel row aside">
+			<div className="side-panel">
 				<section>
 					<h3>Who are we?</h3>
 					<p>
@@ -100,6 +100,7 @@ function HomePage() {
 						Fullstack Web Development Course!
 					</p>
 				</section>
+				<hr />
 				<section>
 					<h3>What is Rate My Stuff?</h3>
 					<p>
@@ -113,6 +114,7 @@ function HomePage() {
 						interactions. Start uploading, voting, and engaging today!
 					</p>
 				</section>
+				<hr />
 				<section>
 					<h3>Top Rated Posts</h3>
 					<ul>

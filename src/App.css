@@ -11,15 +11,6 @@ body {
   text-decoration: none;
 }
 
-.row::after {
-  clear: both;
-  display: table;
-}
-
-.aside {
-  text-align: center;
-}
-
 .logo {
   height: 6em;
   will-change: filter;
@@ -68,12 +59,12 @@ textarea {
 }
 
 .side-panel {
-  display: flex;
-  flex-direction: column;
   position: sticky;
-  width: 50%;
-  margin-left: 2%;
-  margin-top: 15%;
+  top: 10%;
+  max-width: 20%;
+  max-height: 42rem;
+  text-align: center;
+  border: 1px solid white;
 }
 
 .card {
