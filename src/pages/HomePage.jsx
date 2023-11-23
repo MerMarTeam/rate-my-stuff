@@ -41,8 +41,6 @@ function HomePage() {
 	return (
 		<div className="parent-div">
 			<div className="homepage">
-
-
 				<section>
 					<h3>Who are we?</h3>
 					<p>

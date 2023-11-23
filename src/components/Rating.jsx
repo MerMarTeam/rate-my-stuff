@@ -105,7 +105,7 @@ function Rating(props) {
 
         <div className='post-rating'>
             <p>Average rating: {
-                averageRating ? averageRating : "no rating yet"
+                averageRating ? averageRating + " " + "(" + "out of" + " " + props.post.ratings.length + ")" : "no rating yet"
             }</p>
 
             <i id="rating-1" style={starStyle} onClick={handleStarClick} className={star1Hovered ? "bi bi-star-fill fa-2x" : "bi bi-star fa-2x"}
