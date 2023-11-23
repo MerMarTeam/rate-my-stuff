@@ -7,13 +7,13 @@ body {
   padding: 2%;
 }
 
-#root a{
+#root a {
   text-decoration: none;
 }
 
 .row::after {
-  clear:both;
-  display:table;
+  clear: both;
+  display: table;
 }
 
 .aside {
@@ -25,9 +25,11 @@ body {
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -36,6 +38,7 @@ body {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -59,7 +62,7 @@ textarea {
   resize: none;
 }
 
-.homepage{
+.homepage {
   position: inherit;
   margin: 1%;
 }
@@ -113,7 +116,7 @@ img {
   float: inherit;
   left: 3%;
   color: gray;
-  
+
 }
 
 .description {
@@ -137,4 +140,13 @@ img {
 .comments-count {
   width: 10%;
   margin: 1%;
+}
+
+.container {
+  position: absolute;
+  max-width: 30%;
+}
+
+#submit-button {
+  float: inline-end;
 }

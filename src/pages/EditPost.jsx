@@ -119,15 +119,11 @@ function EditPost(params) {
 
 							<br />
 
-
-							<button className="btn btn-primary" type="submit">
+							<button id="submit-button" className="btn btn-primary" type="submit">
 								Submit
 							</button>
 
 						</form>
-
-
-
 
 						<button
 							onClick={handleDelete}
