@@ -103,7 +103,7 @@ textarea {
 
 /* This should be responsive in the future */
 img {
-  width: 95%;
+  max-width: 95%;
   height: auto;
 }
 
