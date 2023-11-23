@@ -11,7 +11,6 @@ function HomePage() {
 			.get('/posts?_embed=ratings&_embed=comments')
 			.then((response) => {
 				console.log('API: getting posts success');
-				console.log('----------------------------------', response.data);
 				setPostsArray(response.data);
 			})
 			.catch((error) => {
@@ -58,6 +57,8 @@ function HomePage() {
 
 							<dl className="description">{post.description}</dl>
 
+							<Rating post={post} postNewRating={postNewRating} />
+
 							<div className='comments-count'>
 								<i className="fa-regular fa-comments fa-2xl" style={{ color: "#ffffff" }}
 									onMouseEnter={(event) => { event.target.className = "fa-regular fa-comments fa-2xl fa-beat" }}
@@ -66,8 +67,6 @@ function HomePage() {
 								</i>
 								<h3 style={{ display: 'inline', marginLeft: '10px' }}>{post.comments.length}</h3>
 							</div>
-
-							<Rating post={post} postNewRating={postNewRating} />
 						</div>
 
 					);
