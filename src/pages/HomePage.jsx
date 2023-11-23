@@ -28,6 +28,7 @@ function HomePage() {
 			})
 			.then((response) => {
 				console.log('API: putting new rating on a post');
+				getPostsFromApi();
 			})
 			.catch((error) => {
 				console.log('API: Connection Failed' + '  ' + error);

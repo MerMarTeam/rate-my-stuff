@@ -8,7 +8,7 @@ function Rating(props) {
     function calculateAverageRating() {
         if (props.post.ratings) {
             let sum = 0;
-            
+
             if (givenRating > 0) sum = givenRating;
             for (let i = 0; i < props.post.ratings.length; i++) {
                 sum += props.post.ratings[i].starsCount
