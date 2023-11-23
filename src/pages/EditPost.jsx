@@ -54,6 +54,7 @@ function EditPost(params) {
 			.then((response) => {
 				if (response.status == 200) console.log('API: delete post successful');
 				else console.log('API: ', response);
+				navigate('/')
 			})
 			.catch((error) => {
 				console.log('Connection Failed' + '  ' + error);
@@ -118,24 +119,18 @@ function EditPost(params) {
 
 							<br />
 
-							<div className="row">
-								<div className="col-md-6">
-									<button className="btn btn-primary" type="submit">
-										Submit
-									</button>
-								</div>
-								<div className="col-md-6">
-									<Link to="/">
-										<button
-											onClick={handleDelete}
-											className="btn btn-danger float-end"
-										>
-											Delete
-										</button>
-									</Link>
-								</div>
-							</div>
+							<button id="submit-button" className="btn btn-primary" type="submit">
+								Submit
+							</button>
+
 						</form>
+
+						<button
+							onClick={handleDelete}
+							className="btn btn-danger">
+							Delete
+						</button>
+
 					</>
 				)}
 			</div>

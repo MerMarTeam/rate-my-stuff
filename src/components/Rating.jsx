@@ -17,6 +17,12 @@ function Rating(props) {
     const toggleHover4 = () => setStar4Hovered(!star4Hovered);
     const toggleHover5 = () => setStar5Hovered(!star5Hovered);
 
+    useEffect(() => {
+        if (props.post.ratings) {
+            calculateAverageRating();
+        }
+    }, [givenRating]);
+
     function calculateAverageRating() {
         if (props.post.ratings) {
             let sum = 0;
@@ -39,6 +45,7 @@ function Rating(props) {
 
     function handleStarClick(event) {
         let userRating = 0;
+
         for (let i = 1; i <= 5; i++) {
             if (event.target.id == `rating-${i}`) userRating = i;
         }
@@ -49,17 +56,9 @@ function Rating(props) {
             starsCount: userRating,
             postId: props.post.id
         }
+
         props.postNewRating(newRatingObject)
-
-        // TODO: change the style of the stars depending on which rating button is clicked
     }
-
-    useEffect(() => {
-
-        if (props.post.ratings) {
-            calculateAverageRating();
-        }
-    }, [givenRating]);
 
     function toggleCorrectHovers(id) {
         switch (id) {
@@ -91,18 +90,10 @@ function Rating(props) {
             default:
                 break;
         }
-
     }
 
     function handleStarHover(event) {
-        if (event._reactName == "onMouseEnter") {
-            console.log("Mouse entered")
-            toggleCorrectHovers(event.target.id)
-        }
-        if (event._reactName == "onMouseLeave") {
-            console.log("Mouse left")
-            toggleCorrectHovers(event.target.id)
-        }
+        toggleCorrectHovers(event.target.id)
     }
 
     const starStyle = {
