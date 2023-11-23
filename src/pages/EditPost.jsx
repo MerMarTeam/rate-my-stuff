@@ -119,21 +119,22 @@ function EditPost(params) {
 
 							<br />
 
-							<div className="row">
-								<div className="col-md-6">
-									<button className="btn btn-primary" type="submit">
-										Submit
-									</button>
-								</div>
-								<div className="col-md-6">
-									<button
-										onClick={handleDelete}
-										className="btn btn-danger float-end">
-										Delete
-									</button>
-								</div>
-							</div>
+
+							<button className="btn btn-primary" type="submit">
+								Submit
+							</button>
+
 						</form>
+
+
+
+
+						<button
+							onClick={handleDelete}
+							className="btn btn-danger">
+							Delete
+						</button>
+
 					</>
 				)}
 			</div>
