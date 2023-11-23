@@ -2,7 +2,26 @@
 
 ## ❓What is it?
 
-    "Rate My Stuff" is a website where users can upload their "stuff" and other users can vote them. The voting system works as 5-stars system. Also, users can comment on the stuff. The OP can edit and delete their posts.
+    "Rate My Stuff" is a website where users can upload their "stuff" and other users can vote them. The voting system works as 5-stars system. Also, users can comment on the stuff. Users can edit and delete posts.
+
+## How to setup
+`clone repo`
+
+`npm run install`
+
+`npm run dev`
+
+This project depends on the json-server backend, which is hosted on Adaptable.io
+https://bootcamp-json-server-backend.adaptable.app/
+
+The json-server backend repo: 
+https://github.com/pomerama/json-server-backend/
+
+## Deployed version
+https://rate-my-stuff.netlify.app/
+
+
+## Development
 
 - ### ✔️ Milestone 1:
 
@@ -27,9 +46,13 @@
 - ### ✔️ Milestone 5:
   - Styling <3
 
-# Planning DLCs:
+# Future ideas:
 
-        - ...
+        - User authentication
+        - Access control
+        - Categories
+        - Tags
+        
 
 ## Wireframe of the MVP
 
@@ -42,9 +65,3 @@
 - Links to API:
   - https://bootcamp-json-server-backend.adaptable.app
   - https://github.com/pomerama/json-server-backend/tree/master
-
-# Technical Documentation:
-
-## API Structure:
-
-....
