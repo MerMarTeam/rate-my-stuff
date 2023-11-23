@@ -61,10 +61,13 @@ textarea {
 .side-panel {
   position: sticky;
   top: 10%;
-  max-width: 20%;
-  max-height: 42rem;
   text-align: center;
   border: 1px solid white;
+
+  max-width: 40%;
+  max-height: 42rem;
+
+  min-width: 20%;
 }
 
 .card {

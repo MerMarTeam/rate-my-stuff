@@ -41,6 +41,30 @@ function HomePage() {
 	return (
 		<div className="parent-div">
 			<div className="homepage">
+
+
+				<section>
+					<h3>Who are we?</h3>
+					<p>
+						We are Marat & Mert and this is our second project for Ironhack
+						Fullstack Web Development Course!
+					</p>
+				</section>
+				<hr />
+				<section>
+					<h3>What is Rate My Stuff?</h3>
+					<p>
+						Welcome to RMS, your go-to platform for sharing and celebrating the
+						things that matter to you! Upload your favorite images and let the
+						community weigh in with votes and comments. Whether it's your latest
+						DIY project, a stunning travel photo, or anything else you're proud
+						of, "Rate My Stuff" is the place to showcase your creations and
+						gather feedback from a supportive community. Join us in fostering a
+						vibrant space for creativity, inspiration, and friendly
+						interactions. Start uploading, voting, and engaging today!
+					</p>
+				</section>
+				<hr />
 				<div className="title">
 					<h1>Stuffs to Rate</h1>
 				</div>
@@ -93,28 +117,7 @@ function HomePage() {
 
 			</div>
 			<div className="side-panel">
-				<section>
-					<h3>Who are we?</h3>
-					<p>
-						We are Marat & Mert and this is our second project for Ironhack
-						Fullstack Web Development Course!
-					</p>
-				</section>
-				<hr />
-				<section>
-					<h3>What is Rate My Stuff?</h3>
-					<p>
-						Welcome to RMS, your go-to platform for sharing and celebrating the
-						things that matter to you! Upload your favorite images and let the
-						community weigh in with votes and comments. Whether it's your latest
-						DIY project, a stunning travel photo, or anything else you're proud
-						of, "Rate My Stuff" is the place to showcase your creations and
-						gather feedback from a supportive community. Join us in fostering a
-						vibrant space for creativity, inspiration, and friendly
-						interactions. Start uploading, voting, and engaging today!
-					</p>
-				</section>
-				<hr />
+
 				<section>
 					<h3>Top Rated Posts</h3>
 					<ul>
