@@ -138,3 +138,8 @@ img {
   width: 10%;
   margin: 1%;
 }
+
+.create-page {
+  align-items: center;
+  text-align: right;
+}
