@@ -69,9 +69,6 @@ function HomePage() {
 		<>
 			<div className="parent-div">
 				<div className="homepage">
-					<div className="title">
-						<h1>Stuffs to Rate</h1>
-					</div>
 					{[...postsArray].reverse().map((post, i) => {
 						return (
 							<div key={post.id} className="post">
