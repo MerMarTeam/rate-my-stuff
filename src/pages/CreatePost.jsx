@@ -21,9 +21,7 @@ function CreatePost(params) {
 		api
 			.post('/posts', newObj)
 			.then((response) => {
-				// TODO: handle unauthorized response 401
-				console.log('Connection to API success.....!');
-				console.log(response);
+				console.log('API: Creating new post successfull');
 				navigate('/');
 			})
 			.catch((error) => {

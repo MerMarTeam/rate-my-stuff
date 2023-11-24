@@ -32,14 +32,14 @@ function Rating(props) {
                 sum += props.post.ratings[i].starsCount
             }
 
-            let average;
+            let average = 0;
             // If the user provided a new rating, we shall divide by one more
             if (givenRating > 0) {
                 average = Math.ceil(sum / (props.post.ratings.length + 1));
             } else {
                 average = Math.ceil(sum / props.post.ratings.length)
             }
-            setAverageRating(average)
+            setAverageRating(average);
         }
     }
 
@@ -57,7 +57,9 @@ function Rating(props) {
             postId: props.post.id
         }
 
-        props.postNewRating(newRatingObject)
+        props.postNewRating(newRatingObject);
+
+        if (props.calculateTopFivePosts) props.calculateTopFivePosts();
     }
 
     function toggleCorrectHovers(id) {

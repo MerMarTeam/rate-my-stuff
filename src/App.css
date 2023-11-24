@@ -185,3 +185,16 @@ nav {
   margin-bottom: 2%;
 
 }
+
+.top-five-list {
+  list-style: none;
+}
+
+.top-five-list a {
+  /* text-decoration: none; */
+  color: white;
+}
+
+.top-five-list a:hover {
+  color: var(--bs-primary)
+}

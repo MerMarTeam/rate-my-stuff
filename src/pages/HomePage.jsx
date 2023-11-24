@@ -5,6 +5,31 @@ import Rating from '../components/Rating';
 
 function HomePage() {
 	const [postsArray, setPostsArray] = useState([]);
+	const [topFive, setTopFive] = useState([])
+
+	useEffect(() => {
+		getPostsFromApi();
+	}, []);
+
+	useEffect(() => {
+		calculateTopFivePosts()
+	}, [postsArray])
+
+	function calculateTopFivePosts() {
+		let postsIdsWithAverages = []
+		if (postsArray.length > 0) {
+			postsArray.forEach((post) => {
+				let sum = 0;
+				for (let i = 0; i < post.ratings.length; i++) {
+					sum += post.ratings[i].starsCount
+				}
+				let average = Math.ceil(sum / post.ratings.length)
+				postsIdsWithAverages.push({ id: post.id, title: post.title, average: average })
+			})
+			let tempFive = [...postsIdsWithAverages].sort((a, b) => b.average - a.average).slice(0, 5)
+			setTopFive(tempFive);
+		}
+	}
 
 	function getPostsFromApi() {
 		api
@@ -34,10 +59,6 @@ function HomePage() {
 			});
 	}
 
-	useEffect(() => {
-		getPostsFromApi();
-	}, []);
-
 	return (
 		<div className="parent-div">
 			<div className="homepage">
@@ -48,7 +69,7 @@ function HomePage() {
 						Fullstack Web Development Course!
 					</p>
 				</section>
-				<hr />
+
 				<section>
 					<h3>What is Rate My Stuff?</h3>
 					<p>
@@ -62,7 +83,7 @@ function HomePage() {
 						interactions. Start uploading, voting, and engaging today!
 					</p>
 				</section>
-				<hr />
+
 				<div className="title">
 					<h1>Stuffs to Rate</h1>
 				</div>
@@ -76,7 +97,7 @@ function HomePage() {
 
 							<dl className="description">{post.description}</dl>
 
-							<Rating post={post} postNewRating={postNewRating} />
+							<Rating post={post} postNewRating={postNewRating} calculateTopFivePosts={calculateTopFivePosts} />
 
 							<div className="comments-count">
 								<Link to={`/posts/${post.id}`}>
@@ -115,18 +136,22 @@ function HomePage() {
 
 			</div>
 			<div className="side-panel">
-
 				<section>
-					<h3>Top Rated Posts</h3>
-					<ul>
-						<li>Test</li>
-						<li>Test</li>
-						<li>Test</li>
-						<li>Test</li>
+					<h3>Top 5 Posts</h3>
+					<ul className='top-five-list'>
+						{topFive && topFive.map((post) => {
+							return (
+								<li key={post.id} className=''>
+									<Link to={`/posts/${post.id}`}>
+										{post.title.length > 20 ? post.title.slice(0, 20) + "..." : post.title}
+									</Link>
+								</li>
+							)
+						})}
 					</ul>
 				</section>
 			</div>
-		</div>
+		</div >
 	);
 }
 
