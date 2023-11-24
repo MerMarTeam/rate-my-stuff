@@ -62,12 +62,15 @@ textarea {
   position: sticky;
   top: 10%;
   text-align: center;
-  border: 1px solid white;
 
   max-width: 40%;
   max-height: 42rem;
 
   min-width: 20%;
+}
+
+.top-element {
+  margin-top: 1%;
 }
 
 .card {
@@ -155,6 +158,7 @@ img {
   height: 100px;
   padding: 13px 18px;
   border-radius: 60px;
+  max-width: 100px;
 
   position: sticky;
   float: inherit;
@@ -167,6 +171,10 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.create-post-link {
+  max-width: 100px;
 }
 
 #create-post-button p {
@@ -197,4 +205,19 @@ nav {
 
 .top-five-list a:hover {
   color: var(--bs-primary)
+}
+
+.parent-footer {
+padding-top: 2%;
+display: flex;
+justify-content: space-around;
+gap: 10%;
+}
+
+.what-is {
+  max-width: 45%;
+}
+
+.who-are-we {
+  max-width: 45%;
 }
